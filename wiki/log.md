@@ -33,7 +33,7 @@ confidence: high
 ## [2026-06-18] restructure | 扩展为四大学科架构
 
 - 仓库从纯 OS 扩展为 OS + 组成原理 + 网络 + 数据结构
-- 重组目录：`concepts/{os,arch,network,ds}/` + `synthesis/{os,arch,network,ds}/`
+- 重组目录：`concepts/{os,ca,net,ds}/` + `synthesis/{os,ca,net,ds}/`
 - 重写 `CLAUDE.md`、`wiki-purpose.md`、`wiki-schema.md`、`index.md`、`overview.md`
 - 新增 `subject` frontmatter 字段，统一学科代号体系
 - 新增 `## 跨学科` 章节约定，同一概念多学科视角互联

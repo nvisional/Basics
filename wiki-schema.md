@@ -20,13 +20,13 @@ os/                         # 仓库根目录，也是 Obsidian Vault 根
 │   ├── review-queue.md     # 待人工审核条目
 │   ├── concepts/           # 概念节点
 │   │   ├── os/             #   操作系统
-│   │   ├── arch/           #   计算机组成原理
-│   │   ├── network/        #   计算机网络
+│   │   ├── ca/            #   计算机组成原理
+│   │   ├── net/            #   计算机网络
 │   │   └── ds/             #   数据结构
 │   ├── synthesis/          # 跨概念总结与对比
 │   │   ├── os/
-│   │   ├── arch/
-│   │   ├── network/
+│   │   ├── ca/
+│   │   ├── net/
 │   │   └── ds/
 │   └── indexes/            # 未来索引分片（>150 页时启用）
 └── .gitignore
@@ -58,7 +58,7 @@ os/                         # 仓库根目录，也是 Obsidian Vault 根
 ---
 title: "页面标题"
 type: concept | synthesis | index | overview | log | review
-subject: os | arch | network | ds | cross
+subject: os | ca | net | ds | cross
 tags: [os, memory-management, ...]
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
@@ -75,7 +75,7 @@ contested: false
 |------|------|------|
 | `title` | ✅ | 页面标题 |
 | `type` | ✅ | 页面类型 |
-| `subject` | ✅ | os / arch / network / ds / cross |
+| `subject` | ✅ | os / ca / net / ds / cross |
 | `tags` | ✅ | 至少包含学科标签 + 模块标签 |
 | `created` | ✅ | 创建日期 |
 | `updated` | ✅ | 最后更新日期 |
@@ -91,8 +91,8 @@ contested: false
 | 代号 | 含义 |
 |------|------|
 | `os` | 操作系统 |
-| `arch` | 计算机组成原理 |
-| `network` | 计算机网络 |
+| `ca` | 计算机组成原理 |
+| `net` | 计算机网络 |
 | `ds` | 数据结构 |
 | `cross` | 跨学科概念 |
 
@@ -101,13 +101,13 @@ contested: false
 ## 标签分类
 
 ### 学科标签
-`os` `arch` `network` `ds` `cross`
+`os` `ca` `net` `ds` `cross`
 
 ### 操作系统
 `memory-management` `process-concurrency` `file-system` `io-device`
 
 ### 计算机组成原理
-`data-representation` `isa` `processor` `memory-hierarchy` `cache` `pipeline`
+`data-representation` `isa` `processor` `memory-hiercay` `cache` `pipeline`
 
 ### 计算机网络
 `physical-link` `network-layer` `transport-layer` `application-layer` `routing`

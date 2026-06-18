@@ -23,8 +23,8 @@ Raw Sources（不可变）→ Wiki（LLM 维护）→ Schema（本文件 + wiki-
 | 代号 | 学科 | 目录 |
 |------|------|------|
 | `os` | 操作系统 | `wiki/concepts/os/` |
-| `arch` | 计算机组成原理 | `wiki/concepts/arch/` |
-| `network` | 计算机网络 | `wiki/concepts/network/` |
+| `ca` | 计算机组成原理 | `wiki/concepts/ca/` |
+| `net` | 计算机网络 | `wiki/concepts/net/` |
 | `ds` | 数据结构 | `wiki/concepts/ds/` |
 | `cross` | 跨学科概念 | 任意，标注 `subject: cross` |
 

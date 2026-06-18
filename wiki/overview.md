@@ -32,7 +32,7 @@ I/O & Device          ░░░░░░░░░░  0%  远期
 Data Representation   ░░░░░░░░░░  0%  待开始
 Instruction Set       ░░░░░░░░░░  0%  待开始
 Processor             ░░░░░░░░░░  0%  待开始
-Memory Hierarchy      ░░░░░░░░░░  0%  待开始
+Memory Hiercay      ░░░░░░░░░░  0%  待开始
 ```
 
 ### 计算机网络

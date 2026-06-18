@@ -52,14 +52,14 @@ confidence: high
 
 ---
 
-## 二、计算机组成原理  `arch`
+## 二、计算机组成原理  `ca`
 
 | 模块 | 进度 |
 |------|------|
 | Data Representation | ⚪ 远期 |
 | Instruction Set | ⚪ 远期 |
 | Processor | ⚪ 远期 |
-| Memory Hierarchy | ⚪ 远期 |
+| Memory Hiercay | ⚪ 远期 |
 
 | 节点 | 状态 | 简述 |
 |------|------|------|
@@ -67,7 +67,7 @@ confidence: high
 
 ---
 
-## 三、计算机网络  `network`
+## 三、计算机网络  `net`
 
 | 模块 | 进度 |
 |------|------|
@@ -112,8 +112,8 @@ confidence: high
 ```
 wiki/indexes/
   ├── os.md
-  ├── arch.md
-  ├── network.md
+  ├── ca.md
+  ├── net.md
   └── ds.md
 ```
 
