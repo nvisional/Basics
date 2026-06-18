@@ -1,6 +1,7 @@
 ---
 title: 进程上下文
 type: concept
+subject: os
 tags: [os, process-concurrency, x86]
 created: 2026-06-18
 updated: 2026-06-18
@@ -104,8 +105,8 @@ CR3 一换，页表根指针变了，TLB 里的旧映射全部作废。新进程
 
 ## 关联
 
-- [[concepts/two-level-page-table]] — 页表与 CR3 的关系
-- [[concepts/page-allocation-replacement]] — 页框分配影响地址空间构成
+- [[concepts/os/two-level-page-table]] — 页表与 CR3 的关系
+- [[concepts/os/page-allocation-replacement]] — 页框分配影响地址空间构成
 - [[tlb]] — TLB 刷新策略、ASID、PCID
 - [[scheduling]] — 调度器如何决定"切换谁"
 - [[concurrency-thread-vs-process]] — 线程与进程的完整对比

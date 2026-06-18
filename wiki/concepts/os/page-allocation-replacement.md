@@ -1,6 +1,7 @@
 ---
 title: 页框分配策略与页面置换范围
 type: concept
+subject: os
 tags: [os, memory-management, design-tradeoff]
 created: 2026-06-18
 updated: 2026-06-18
@@ -96,6 +97,6 @@ OS 给进程分配物理页框时，有两个独立的决策维度：
 
 ## 关联
 
-- [[concepts/two-level-page-table]] — 页表结构，PTE 如何指向分配的物理页框
+- [[concepts/os/two-level-page-table]] — 页表结构，PTE 如何指向分配的物理页框
 - [[virtual-memory]] — 缺页处理、swap、工作集模型
 - [[page-replacement-algorithms]] — LRU、Clock、LFU 等具体淘汰算法

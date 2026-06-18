@@ -5,40 +5,67 @@ Schema 由人和 LLM 共同演化。
 
 ---
 
+## 仓库结构
+
+```
+os/                         # 仓库根目录，也是 Obsidian Vault 根
+├── CLAUDE.md               # Schema 层（Claude Code 自动加载）
+├── wiki-purpose.md         # Wiki 目标与学习范围
+├── wiki-schema.md          # 本文件
+├── raw/                    # Raw Sources（不可变，按 YYYY-MM-DD 组织）
+├── wiki/
+│   ├── index.md            # 中枢索引（四大学科）
+│   ├── log.md              # 追加式操作日志
+│   ├── overview.md         # 全局知识状态摘要
+│   ├── review-queue.md     # 待人工审核条目
+│   ├── concepts/           # 概念节点
+│   │   ├── os/             #   操作系统
+│   │   ├── arch/           #   计算机组成原理
+│   │   ├── network/        #   计算机网络
+│   │   └── ds/             #   数据结构
+│   ├── synthesis/          # 跨概念总结与对比
+│   │   ├── os/
+│   │   ├── arch/
+│   │   ├── network/
+│   │   └── ds/
+│   └── indexes/            # 未来索引分片（>150 页时启用）
+└── .gitignore
+```
+
+---
+
 ## 页面类型
 
-| 类型 | 目录 | 说明 | 示例 |
-|------|------|------|------|
-| `concept` | `wiki/concepts/` | 单一知识原子，一个页面 = 一个概念 | `two-level-page-table.md` |
-| `synthesis` | `wiki/synthesis/` | 跨概念的总结、对比、综述 | `memory-management-overview.md` |
-| `index` | `wiki/index.md` | 中枢索引，LLM 每次查询的入口 | — |
-| `overview` | `wiki/overview.md` | 全局知识状态摘要，ingest 后自动更新 | — |
-| `log` | `wiki/log.md` | 追加式操作日志，记录每次操作 | — |
-| `review` | `wiki/review-queue.md` | 待人工审核的条目（歧义、冲突、不确定项） | — |
+| 类型 | 目录 | 说明 |
+|------|------|------|
+| `concept` | `wiki/concepts/{subject}/` | 单一知识原子 |
+| `synthesis` | `wiki/synthesis/{subject}/` | 跨概念总结、对比、综述 |
+| `index` | `wiki/index.md` | 总索引，LLM 每次查询入口 |
+| `overview` | `wiki/overview.md` | 全局知识状态摘要 |
+| `log` | `wiki/log.md` | 追加式操作日志 |
+| `review` | `wiki/review-queue.md` | 待人工审核条目 |
 
 ### 页面大小限制
 
 - 概念页软上限：**400 行**，硬上限：**800 行**
 - 超过软上限时考虑拆分为多个概念节点
-- Lint 强制检查硬上限
 
 ---
 
 ## Frontmatter 规范
 
-每个页面必须包含 YAML frontmatter：
-
 ```yaml
 ---
-title: "页面标题（中文或英文）"
+title: "页面标题"
 type: concept | synthesis | index | overview | log | review
+subject: os | arch | network | ds | cross
 tags: [os, memory-management, ...]
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 status: draft | in-progress | done
 confidence: high | medium | low
-sources: []           # 来源列表，尽量填写
-contested: false      # 是否存在矛盾观点
+sources: []
+contested: false
 ---
 ```
 
@@ -48,61 +75,70 @@ contested: false      # 是否存在矛盾观点
 |------|------|------|
 | `title` | ✅ | 页面标题 |
 | `type` | ✅ | 页面类型 |
-| `tags` | ✅ | 标签，至少包含模块标签 |
+| `subject` | ✅ | os / arch / network / ds / cross |
+| `tags` | ✅ | 至少包含学科标签 + 模块标签 |
 | `created` | ✅ | 创建日期 |
 | `updated` | ✅ | 最后更新日期 |
 | `status` | ✅ | draft / in-progress / done |
-| `confidence` | ✅ | 对内容正确性的信心 |
-| `sources` | 推荐 | 来源列表，如 `["教材第3章", "讲义 p10-15"]` |
-| `contested` | 可选 | 存在矛盾或争议观点时设为 true |
+| `confidence` | ✅ | high / medium / low |
+| `sources` | 推荐 | 来源列表 |
+| `contested` | 可选 | 存在矛盾观点时 true |
+
+---
+
+## 学科代号
+
+| 代号 | 含义 |
+|------|------|
+| `os` | 操作系统 |
+| `arch` | 计算机组成原理 |
+| `network` | 计算机网络 |
+| `ds` | 数据结构 |
+| `cross` | 跨学科概念 |
 
 ---
 
 ## 标签分类
 
-| 标签 | 含义 |
-|------|------|
-| `os` | 操作系统核心概念 |
-| `memory-management` | 内存管理 |
-| `process-concurrency` | 进程与并发 |
-| `file-system` | 文件系统 |
-| `io-device` | I/O 与设备 |
-| `networking` | 网络 |
-| `virtualization` | 虚拟化 |
-| `x86` | x86 架构相关 |
-| `arm` | ARM 架构相关 |
-| `linux` | Linux 内核实现 |
-| `design-tradeoff` | 设计权衡 |
-| `meta` | Wiki 元信息 |
+### 学科标签
+`os` `arch` `network` `ds` `cross`
+
+### 操作系统
+`memory-management` `process-concurrency` `file-system` `io-device`
+
+### 计算机组成原理
+`data-representation` `isa` `processor` `memory-hierarchy` `cache` `pipeline`
+
+### 计算机网络
+`physical-link` `network-layer` `transport-layer` `application-layer` `routing`
+
+### 数据结构
+`linear` `tree` `graph` `hash` `advanced-ds`
+
+### 通用
+`x86` `arm` `riscv` `linux` `design-tradeoff` `meta`
 
 ---
 
 ## 命名约定
 
-- **概念节点**：小写英文 + 连字符，如 `two-level-page-table.md`
-- **综合页**：`模块名-overview.md`，如 `memory-management-overview.md`
-- 文件名应自解释，一眼能看出内容
-
----
-
-## 交叉引用规则
-
-- 使用 `[[wikilink]]` 语法做交叉引用（Obsidian 兼容）
-- 每个概念页末尾应有 `## 关联` 部分，列出相关节点
-- 链接不存在的页面是合法的（预留节点），但 Lint 会列出
+- **概念节点**：`{subject}/概念名.md`，如 `os/two-level-page-table.md`
+- **综合页**：`{subject}/主题-overview.md`，如 `os/memory-management-overview.md`
+- 文件名小写英文 + 连字符，自解释
 
 ---
 
 ## 正文结构约定
 
-概念节点按以下结构组织：
+概念节点按以下结构：
 
-1. **## 直觉** — 一句话说清楚这个概念在干什么，为什么存在
+1. **## 直觉** — 一句话说清概念在干什么，为什么存在
 2. **## 细节** — 逐步展开机制、数据结构、流程
 3. **## 关键公式/代码** — 精确的技术细节
 4. **## 设计权衡** — 为什么这么做？其他方案为什么不行？
 5. **## 关联** — `[[wikilinks]]` 连接相关概念
+6. **## 跨学科**（可选）— 与其他三门课的联系
 
 ---
 
-*本文件由人和 LLM 共同维护。每次新增页面类型或修改约定时更新。*
+*本文件由人和 LLM 共同维护。*

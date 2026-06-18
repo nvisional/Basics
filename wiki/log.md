@@ -1,7 +1,8 @@
 ---
 title: Wiki Log — 操作日志
 type: log
-tags: [os, meta, log]
+subject: cross
+tags: [cross, meta, log]
 created: 2026-06-16
 updated: 2026-06-18
 status: in-progress
@@ -28,3 +29,11 @@ confidence: high
 - 新增 [[concepts/process-context]] — 进程上下文三大块，线程切换 vs 进程切换的成本差异
 - 更新 [[concepts/two-level-page-table]] — 新增"虚拟地址与物理地址的先后关系"和"页表即约束"两个章节
 - 强化了 CR3、页框分配、进程上下文之间的交叉引用
+
+## [2026-06-18] restructure | 扩展为四大学科架构
+
+- 仓库从纯 OS 扩展为 OS + 组成原理 + 网络 + 数据结构
+- 重组目录：`concepts/{os,arch,network,ds}/` + `synthesis/{os,arch,network,ds}/`
+- 重写 `CLAUDE.md`、`wiki-purpose.md`、`wiki-schema.md`、`index.md`、`overview.md`
+- 新增 `subject` frontmatter 字段，统一学科代号体系
+- 新增 `## 跨学科` 章节约定，同一概念多学科视角互联

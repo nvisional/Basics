@@ -1,7 +1,8 @@
 ---
 title: Review Queue — 待人工审核
 type: review
-tags: [os, meta, review]
+subject: cross
+tags: [cross, meta, review]
 created: 2026-06-16
 updated: 2026-06-16
 status: in-progress

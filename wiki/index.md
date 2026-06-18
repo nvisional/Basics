@@ -1,83 +1,103 @@
 ---
-title: Wiki Index — 操作系统知识图谱
+title: Wiki Index — 计算机基础知识图谱
 type: index
-tags: [os, meta, index]
+subject: cross
+tags: [cross, meta, index]
 created: 2026-06-16
 updated: 2026-06-18
 status: in-progress
 confidence: high
 ---
 
-# Wiki Index · 操作系统
+# Wiki Index · 计算机基础
 
-> **索引优先导航 (Index-First)**：Claude 每次查询必须先读本索引，从一行简述定位候选页面，再读候选页面内容。不扫描全 Wiki。
->
-> 学习路线：自底向上，从硬件接口（MMU、中断）到内核抽象（进程、文件系统）。
+> **索引优先导航 (Index-First)**：Claude 每次查询必须先读本索引，从一行简述定位候选页面，再读候选内容。不扫描全 Wiki。
 
 ---
 
-## 统计
+## 全局统计
 
 | 指标 | 数值 |
 |------|------|
 | 总页面数 | 3 |
-| 概念节点 | 3 |
-| 综合页 | 0 |
-| 待审核项 | 0 |
+| 操作系统 | 3 |
+| 组成原理 | 0 |
+| 计算机网络 | 0 |
+| 数据结构 | 0 |
 | 最后更新 | 2026-06-18 |
 
 ---
 
-## Memory Management · 内存管理  🔴 进行中
+## 一、操作系统  `os`
 
-| 节点 | 状态 | 置信度 | 简述 |
-|------|------|--------|------|
-| [[concepts/two-level-page-table]] | done | high | 二级页表地址转换：CR3 → PDE → PTE → 物理地址，偏移量本质，TLB 必要性，页表即约束 |
-| [[concepts/page-allocation-replacement]] | done | high | 固定/可变分配 × 局部/全局置换：三维正交矩阵，Linux 的选择 |
+| 模块 | 进度 |
+|------|------|
+| Memory Management | 🔴 进行中 |
+| Process & Concurrency | 🟢 已开始 |
+| File System | 🟡 待开始 |
+| I/O & Device | ⚪ 远期 |
 
----
+### Memory Management
 
-## Process & Concurrency · 进程与并发  🟢 已开始
+| 节点 | 状态 | 简述 |
+|------|------|------|
+| [[concepts/os/two-level-page-table]] | done | 二级页表: CR3 → PDE → PTE → PA，偏移量本质，页表即约束 |
+| [[concepts/os/page-allocation-replacement]] | done | 固定/可变分配 × 局部/全局置换，2×2 矩阵，Linux 的选择 |
 
-| 节点 | 状态 | 置信度 | 简述 |
-|------|------|--------|------|
-| [[concepts/process-context]] | done | high | 进程上下文三大块：硬件寄存器、地址空间、内核元数据；CR3 切换成本 |
+### Process & Concurrency
 
----
-
-## File System · 文件系统  🟡 待开始
-
-| 节点 | 状态 | 置信度 | 简述 |
-|------|------|--------|------|
-| *(待添加)* | — | — | — |
-
----
-
-## I/O & Device · 输入输出与设备  ⚪ 远期
-
-| 节点 | 状态 | 置信度 | 简述 |
-|------|------|--------|------|
-| *(待添加)* | — | — | — |
+| 节点 | 状态 | 简述 |
+|------|------|------|
+| [[concepts/os/process-context]] | done | 上下文三大块: 硬件寄存器 + 地址空间 + PCB，CR3 切换成本 |
 
 ---
 
-## Networking · 网络  ⚪ 远期
+## 二、计算机组成原理  `arch`
 
-| 节点 | 状态 | 置信度 | 简述 |
-|------|------|--------|------|
-| *(待添加)* | — | — | — |
+| 模块 | 进度 |
+|------|------|
+| Data Representation | ⚪ 远期 |
+| Instruction Set | ⚪ 远期 |
+| Processor | ⚪ 远期 |
+| Memory Hierarchy | ⚪ 远期 |
+
+| 节点 | 状态 | 简述 |
+|------|------|------|
+| *(待添加)* | — | — |
 
 ---
 
-## Virtualization · 虚拟化  ⚪ 远期
+## 三、计算机网络  `network`
 
-| 节点 | 状态 | 置信度 | 简述 |
-|------|------|--------|------|
-| *(待添加)* | — | — | — |
+| 模块 | 进度 |
+|------|------|
+| Physical & Link | ⚪ 远期 |
+| Network | ⚪ 远期 |
+| Transport | ⚪ 远期 |
+| Application | ⚪ 远期 |
+
+| 节点 | 状态 | 简述 |
+|------|------|------|
+| *(待添加)* | — | — |
 
 ---
 
-## Synthesis · 综合与对比
+## 四、数据结构  `ds`
+
+| 模块 | 进度 |
+|------|------|
+| Linear | ⚪ 远期 |
+| Tree & Graph | ⚪ 远期 |
+| Hash & Index | ⚪ 远期 |
+| Advanced | ⚪ 远期 |
+
+| 节点 | 状态 | 简述 |
+|------|------|------|
+| *(待添加)* | — | — |
+
+---
+
+## Synthesis · 综合
 
 | 节点 | 状态 | 简述 |
 |------|------|------|
@@ -87,17 +107,17 @@ confidence: high
 
 ## 索引扩容计划
 
-当前 < 150 页，使用单 `index.md`。当页面数超过 150 时，自动分片到 `wiki/indexes/`：
+当前 < 150 页，使用单 `index.md`。超过时按学科分片到 `wiki/indexes/`：
 
 ```
 wiki/indexes/
-  ├── memory-management.md
-  ├── process-concurrency.md
-  ├── file-system.md
-  └── ...
+  ├── os.md
+  ├── arch.md
+  ├── network.md
+  └── ds.md
 ```
 
-顶层 index.md 变为目录指向各分片。
+顶层 index.md 变为分片目录。
 
 ---
 
