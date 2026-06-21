@@ -4,14 +4,14 @@ type: index
 subject: cross
 tags: [cross, meta, index]
 created: 2026-06-16
-updated: 2026-06-18
+updated: 2026-06-21
 status: in-progress
 confidence: high
 ---
 
 # Wiki Index · 计算机基础
 
-> **索引优先导航 (Index-First)**：Claude 每次查询必须先读本索引，从一行简述定位候选页面，再读候选内容。不扫描全 Wiki。
+> **索引优先导航 (Index-First)**：Claude 每次查询必须先读本索引，从一行简述定位候选页面，再读候选内容。
 
 ---
 
@@ -19,12 +19,13 @@ confidence: high
 
 | 指标 | 数值 |
 |------|------|
-| 总页面数 | 3 |
-| 操作系统 | 3 |
+| 总页面数 | 9 |
+| 操作系统 | 8 |
 | 组成原理 | 0 |
 | 计算机网络 | 0 |
 | 数据结构 | 0 |
-| 最后更新 | 2026-06-18 |
+| 跨学科 | 1 |
+| 最后更新 | 2026-06-21 |
 
 ---
 
@@ -34,7 +35,7 @@ confidence: high
 |------|------|
 | Memory Management | 🔴 进行中 |
 | Process & Concurrency | 🟢 已开始 |
-| File System | 🟡 待开始 |
+| File System | 🟢 已开始 |
 | I/O & Device | ⚪ 远期 |
 
 ### Memory Management
@@ -49,17 +50,20 @@ confidence: high
 | 节点 | 状态 | 简述 |
 |------|------|------|
 | [[concepts/os/process-context]] | done | 上下文三大块: 硬件寄存器 + 地址空间 + PCB，CR3 切换成本 |
+| [[concepts/os/sync-vs-precedence]] | done | 前驱关系定义"谁在前"，同步是实现手段 |
+
+### File System
+
+| 节点 | 状态 | 简述 |
+|------|------|------|
+| [[concepts/os/dentry-inode-dcache]] | done | 目录项、目录文件、inode 三者在磁盘和内存中的位置 |
+| [[concepts/os/inode-block-structure]] | done | inode 号 vs 起始块号，索引表区/项/块号 |
+| [[concepts/os/fcb]] | done | FCB(struct file) 与 inode/dentry 的关系，多 FCB 共享 inode |
+| [[concepts/os/logical-to-physical]] | done | 逻辑地址 → inode 块指针 → 物理块号，与 MMU 翻译类比 |
 
 ---
 
 ## 二、计算机组成原理  `ca`
-
-| 模块 | 进度 |
-|------|------|
-| Data Representation | ⚪ 远期 |
-| Instruction Set | ⚪ 远期 |
-| Processor | ⚪ 远期 |
-| Memory Hiercay | ⚪ 远期 |
 
 | 节点 | 状态 | 简述 |
 |------|------|------|
@@ -69,13 +73,6 @@ confidence: high
 
 ## 三、计算机网络  `net`
 
-| 模块 | 进度 |
-|------|------|
-| Physical & Link | ⚪ 远期 |
-| Network | ⚪ 远期 |
-| Transport | ⚪ 远期 |
-| Application | ⚪ 远期 |
-
 | 节点 | 状态 | 简述 |
 |------|------|------|
 | *(待添加)* | — | — |
@@ -84,40 +81,17 @@ confidence: high
 
 ## 四、数据结构  `ds`
 
-| 模块 | 进度 |
-|------|------|
-| Linear | ⚪ 远期 |
-| Tree & Graph | ⚪ 远期 |
-| Hash & Index | ⚪ 远期 |
-| Advanced | ⚪ 远期 |
-
 | 节点 | 状态 | 简述 |
 |------|------|------|
 | *(待添加)* | — | — |
 
 ---
 
-## Synthesis · 综合
+## 跨学科  `cross`
 
 | 节点 | 状态 | 简述 |
 |------|------|------|
-| *(每个模块完成后写 synthesis)* | — | — |
-
----
-
-## 索引扩容计划
-
-当前 < 150 页，使用单 `index.md`。超过时按学科分片到 `wiki/indexes/`：
-
-```
-wiki/indexes/
-  ├── os.md
-  ├── ca.md
-  ├── net.md
-  └── ds.md
-```
-
-顶层 index.md 变为分片目录。
+| [[concepts/cross/file-block-vs-cache-block]] | done | 文件系统块号(磁盘) vs Cache 块号(CPU)，两次翻译完全解耦 |
 
 ---
 
