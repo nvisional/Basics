@@ -8,13 +8,22 @@
 ## 三层架构
 
 ```
-Raw Sources（不可变）→ Wiki（LLM 维护）→ Schema（本文件 + wiki-schema.md + wiki-purpose.md）
-     raw/                  wiki/
+Raw Sources（不可变）→ 矢量版（sources.md）→ Wiki（LLM 维护）→ Schema（本文件 + wiki-schema.md + wiki-purpose.md）
+   raw/(扫描图片PDF)      wiki/sources.md          wiki/
 ```
 
 - **Raw Sources**：原始教材、讲义、文章。Claude 可读，绝不修改。
 - **Wiki**：Claude 维护的结构化 Markdown 知识库。
 - **Schema**：本文件 + `wiki-schema.md` + `wiki-purpose.md`。
+
+### ⚠️ raw/ 是扫描图片 PDF（重要约束）
+
+`raw/` 下的 5 本教材 + 408 大纲均为**扫描图片 PDF，无文字层**（每页 1 张图、`pdftotext` 提取为空），总计约 3700 页。
+**不要试图全量读取**——读取只能靠视觉 OCR（Read 工具单次 ≤20 页 PDF），成本极高。
+
+→ **矢量版优先（Vector-First）**：`wiki/sources.md` 是这些原始资料的"矢量版"骨架（蒸馏后的廉价知识地图）。
+查询时先读 `sources.md` 定位，**绝不默认重开 PDF**。仅当某章尚 `⚪未消化` 且用户确需细节时，才渲染该章对应页面按需消化，
+随后把内容写入概念页并升级 `sources.md` 中该章状态。
 
 ---
 
@@ -48,10 +57,27 @@ Raw Sources（不可变）→ Wiki（LLM 维护）→ Schema（本文件 + wiki-
 
 ### 2. Query（查询知识）
 
-1. **先读 `wiki/index.md`** — 从一行简述定位候选页面
-2. **只读候选页面** — 不扫描全 Wiki
-3. **合成回答** — 附带 `[[wikilink]]` 引用
-4. 回答值得保留 → 写入对应学科的概念页或 synthesis 页
+1. **先读 `wiki/index.md` + `wiki/sources.md`** — 从一行简述/骨架定位候选页面与原始资料章节
+2. **只读候选页面** — 不扫描全 Wiki，不默认重开 raw/ PDF
+3. **🌐 联网交叉验证（强制）** — 见下方专节，回答前必须执行
+4. **合成回答** — 附带 `[[wikilink]]` 引用 + 验证结论
+5. 回答值得保留 → 写入对应学科的概念页或 synthesis 页
+
+---
+
+## 🌐 联网交叉验证（每次回答强制）
+
+> 本知识库的原始资料是扫描教材，可能有版本差异、OCR 误读、或我的推断错误。
+> **每次实质性回答（涉及事实、公式、算法复杂度、协议细节、考点判断）前，必须联网交叉验证。**
+
+执行约定：
+1. 用 `WebSearch` / `WebFetch` 核对**关键事实**：定义、公式、复杂度、协议字段、考纲范围等。
+2. 优先权威来源：标准文档（RFC）、教材官方、维基百科、知名课程讲义。
+3. **冲突处理**：若联网结果与 wiki/raw 矛盾 → **不要直接采信任一方**，在回答中并列两说，并写入 `wiki/review-queue.md`。
+4. 在回答末尾用一行注明验证状态，如：`✅ 已联网核对（来源：RFC 793 / Wikipedia）` 或 `⚠️ 联网不可用，以下基于教材+推断，待核`。
+5. 若 WebSearch/WebFetch 工具不可用或失败 → 明确告知用户"未能联网验证"，**不得假装已验证**。
+
+例外（可跳过联网）：纯学习方法讨论、wiki 结构维护、用户主观偏好等非事实性内容。
 
 ### 3. Lint（健康检查）
 

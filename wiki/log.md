@@ -26,13 +26,24 @@ confidence: high
 ## [2026-06-18] ingest | 页框分配策略 + 进程上下文 + 页表约束
 
 - 新增 [[concepts/os/page-allocation-replacement]] — 固定/可变分配 × 局部/全局置换的三维矩阵
-- 新增 [[concepts/os/process-context]] — 进程上下文三大块
-- 更新 [[concepts/os/two-level-page-table]] — 新增 VA/PA 先后关系和页表即约束
+- 新增 [[concepts/os/process-context]] — 进程上下文三大块，线程切换 vs 进程切换的成本差异
+- 更新 [[concepts/os/two-level-page-table]] — 新增"虚拟地址与物理地址的先后关系"和"页表即约束"两个章节
+- 强化了 CR3、页框分配、进程上下文之间的交叉引用
 
 ## [2026-06-18] restructure | 扩展为四大学科架构
 
-- 仓库从纯 OS 扩展为 OS + 组成原理 + 网络 + 数据结构
-- 重组目录、重写核心约束文件、新增 subject frontmatter
+- 重组目录：`concepts/{os,ca,net,ds}/` + `synthesis/{os,ca,net,ds}/`
+- 重写 `CLAUDE.md`、`wiki-purpose.md`、`wiki-schema.md`、`index.md`、`overview.md`
+- 新增 `subject` frontmatter 字段，统一学科代号体系
+- 新增 `## 跨学科` 章节约定，同一概念多学科视角互联
+
+## [2026-06-21] ingest | 登记 raw 资料 + 建立矢量版骨架 + 联网验证规则
+
+- raw/ 新增 5 本教材 + 408 大纲，诊断为**扫描图片 PDF（无文字层，约 3700 页）**，全量读取不可行
+- 新增 [[sources]] — 原始资料登记表 + 按 408 考纲的"矢量版"知识骨架（confidence: medium，待与大纲核对）
+- 确立**按需消化**策略：查询时读 sources.md 定位，不默认重开 PDF；逐章消化后升级骨架状态
+- `CLAUDE.md` 新增：raw 扫描图片约束、矢量版优先导航、**🌐 每次回答强制联网交叉验证**规则
+- 现状：未读取任何 PDF（用户选择只搭框架）；OS 已有 3 概念页接入骨架
 
 ## [2026-06-21] ingest | 文件系统基础 + 同步/前驱 + 跨学科
 
