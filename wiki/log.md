@@ -4,7 +4,7 @@ type: log
 subject: cross
 tags: [cross, meta, log]
 created: 2026-06-16
-updated: 2026-06-21
+updated: 2026-06-23
 status: in-progress
 confidence: high
 ---
@@ -53,3 +53,18 @@ confidence: high
 - 新增 [[concepts/os/logical-to-physical]] — 逻辑地址 → inode → 物理块号的翻译链
 - 新增 [[concepts/os/sync-vs-precedence]] — 前驱关系是约束，同步是实现手段
 - 新增 [[concepts/cross/file-block-vs-cache-block]] — 文件系统块号 vs Cache 块号
+
+## [2026-06-23] ingest | CA 指令系统做题思想（ISA 即契约）
+
+- 新增 [[concepts/ca/instruction-set-mindset]] — 二刷视角：ISA 是硬件/软件之间的契约与约束
+- 三大母题思想：扩展操作码=哈夫曼分配、寻址方式=指令长/范围/访存三角、指令格式=时间换空间(RISC 为流水线铺路)
+- 跨学科钩子：哈夫曼(ds)、地址重定位(os 页表即约束)、流水线(ca 第 5 章)
+- 联网核对 408 指令系统题型分布（每年 1–2 选择 + 常出综合大题）
+- sources.md：CA 第 4 章状态 ⚪→🟡（思想层已建，raw PDF 仍未消化）；首个 ca 概念页
+
+## [2026-06-23] ingest | 登记王道做题本 8 本 + 考频分析 md
+
+- raw/ 新增 8 本王道做题本（四科 × 选择题/综合题），判定为扫描图片 PDF（~900KB/页），登记进 [[sources]] 新增"1a 做题本"类目
+- 定位为**题源语料而非题库**：按需渲染单页抽取"权衡轴/母题"，不全量 OCR
+- 登记 `raw/组成原理-考频分析.md`（有文字层，可直接读）进 sources "1b 文本资料"
+- 该 md 存在总数差异（逐项 31 vs 标注 32）→ 记入 [[review-queue]] #1 待核

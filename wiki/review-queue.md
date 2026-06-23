@@ -4,7 +4,7 @@ type: review
 subject: cross
 tags: [cross, meta, review]
 created: 2026-06-16
-updated: 2026-06-16
+updated: 2026-06-23
 status: in-progress
 confidence: high
 ---
@@ -22,7 +22,7 @@ confidence: high
 
 | # | 类型 | 描述 | 关联页面 | 创建日期 | 状态 |
 |---|------|------|----------|----------|------|
-| *(暂无)* | — | — | — | — | — |
+| 1 | Confirm Claim | 考频分析总数差异：逐项求和=31 道，但图标注"共计 32 道"（疑流水线手写涂改或裁切丢字所致） | `raw/组成原理-考频分析.md` · [[sources]] | 2026-06-23 | 待核 |
 
 ---
 
