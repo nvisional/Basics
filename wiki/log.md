@@ -63,6 +63,12 @@ confidence: high
 - 联网核对 408 指令系统题型分布（每年 1–2 选择 + 常出综合大题）
 - sources.md：CA 第 4 章状态 ⚪→🟡（思想层已建，raw PDF 仍未消化）；首个 ca 概念页
 
+## [2026-06-23] ingest | flags 页补充：mod 2ⁿ 原理 + OF 记号改 Cn/Cn-1
+
+- [[concepts/ca/flags-cf-of-addsub]] 新增"原理：减法 = 模 2ⁿ 加法"节：`~B+1 = 2ⁿ−B`，整条推导不涉符号位 → 有/无符号通用，无符号是"原码"也照用
+- OF 记号按课本统一为 `Cn ⊕ Cn-1`（最高位进位 ⊕ 次高位进位），全页去掉 `Cin/Cout` 写法；ALU 最低位进位标为 `C₀`
+- 联网核对：有/无符号加减位层面相同、本质模 2ⁿ（Two's complement - Wikipedia / julesjacobs）
+
 ## [2026-06-23] ingest | CA 标志位与加减运算（CF/OF + 统一加减 ALU）
 
 - 新增 [[concepts/ca/flags-cf-of-addsub]] — 为什么无符号"减出负"看 CF，有符号溢出看 OF
