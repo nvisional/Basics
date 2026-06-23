@@ -4,7 +4,7 @@ type: index
 subject: cross
 tags: [cross, meta, index]
 created: 2026-06-16
-updated: 2026-06-21
+updated: 2026-06-23
 status: in-progress
 confidence: high
 ---
@@ -21,9 +21,9 @@ confidence: high
 
 | 指标 | 数值 |
 |------|------|
-| 总页面数 | 10 |
+| 总页面数 | 11 |
 | 操作系统 | 8 |
-| 组成原理 | 1 |
+| 组成原理 | 2 |
 | 计算机网络 | 0 |
 | 数据结构 | 0 |
 | 跨学科 | 1 |
@@ -70,12 +70,19 @@ confidence: high
 | 模块 | 进度 |
 |------|------|
 | Instruction Set | 🟢 已开始 |
+| Data & ALU | 🟢 已开始 |
 
 ### 指令系统
 
 | 节点 | 状态 | 简述 |
 |------|------|------|
 | [[concepts/ca/instruction-set-mindset]] | done | ISA 是契约/约束；三大母题：扩展操作码=哈夫曼、寻址=三角权衡、格式=时间换空间 |
+
+### 数据的表示与运算
+
+| 节点 | 状态 | 简述 |
+|------|------|------|
+| [[concepts/ca/flags-cf-of-addsub]] | done | CF=C_out⊕Sub(无符号借位) vs OF=C_out⊕C_in(有符号溢出)；统一加减 ALU；3−5 例 |
 
 ---
 

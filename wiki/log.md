@@ -11,6 +11,7 @@ confidence: high
 
 # Wiki Log
 
+
 > 追加式操作日志。格式：`## [YYYY-MM-DD] <operation> | <标题>`
 >
 > Operations: `init` | `ingest` | `query` | `lint` | `restructure`
@@ -61,6 +62,15 @@ confidence: high
 - 跨学科钩子：哈夫曼(ds)、地址重定位(os 页表即约束)、流水线(ca 第 5 章)
 - 联网核对 408 指令系统题型分布（每年 1–2 选择 + 常出综合大题）
 - sources.md：CA 第 4 章状态 ⚪→🟡（思想层已建，raw PDF 仍未消化）；首个 ca 概念页
+
+## [2026-06-23] ingest | CA 标志位与加减运算（CF/OF + 统一加减 ALU）
+
+- 新增 [[concepts/ca/flags-cf-of-addsub]] — 为什么无符号"减出负"看 CF，有符号溢出看 OF
+- 核心区分两个异或门：**CF = C_out ⊕ Sub**（无符号借位，减法即进位取反）vs **OF = C_out ⊕ C_in(最高位⊕次高位)**（有符号溢出）；纠正"异或门属于 CF"的常见记串
+- 统一加减 ALU：一根 Sub 线同时①取反 B ②补最低位 +1 ③翻转 CF
+- 工作例 4 位 3−5：C_out=0 → CF=1(借位)、OF=0(无溢出)，两灯异结论
+- index 组成原理新增"数据的表示与运算"模块（页面 10→11，ca 1→2）
+- 联网核对 borrow 约定（Carry/Overflow flag - Wikipedia）
 
 ## [2026-06-23] ingest | 登记王道做题本 8 本 + 考频分析 md
 
